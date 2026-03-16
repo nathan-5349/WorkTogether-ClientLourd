@@ -9,4 +9,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.11" />
+    <PackageReference Include="MahApps.Metro.SimpleChildWindow" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WorkTogether-ClientLourd.EF\WorkTogether-ClientLourd.EF.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -13,4 +13,11 @@
     <SourceRoot Include="C:\Users\Nathan\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\9.0.14\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\9.0.14\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_Xaml_Behaviors_Wpf Condition=" '$(PkgMicrosoft_Xaml_Behaviors_Wpf)' == '' ">C:\Users\Nathan\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.19</PkgMicrosoft_Xaml_Behaviors_Wpf>
+    <PkgMahApps_Metro Condition=" '$(PkgMahApps_Metro)' == '' ">C:\Users\Nathan\.nuget\packages\mahapps.metro\2.4.11</PkgMahApps_Metro>
+  </PropertyGroup>
 </Project>
