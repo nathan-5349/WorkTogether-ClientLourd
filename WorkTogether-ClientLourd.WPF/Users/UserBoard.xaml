@@ -3,35 +3,69 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
     <Grid Background="{DynamicResource MahApps.Brushes.Window.Background}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <TabControl>
+            <!-- Onglet Staff -->
+            <TabItem Header="Staff">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,10,0,10">
+                        <TextBox x:Name="SearchStaffBox" Width="200" Margin="0,0,10,0"
+                                 mah:TextBoxHelper.Watermark="Rechercher..."
+                                 TextChanged="SearchStaffBox_TextChanged"/>
+                        <Button Content="Ajouter" Click="BtnAddStaff_Click" Margin="0,0,5,0"/>
+                        <Button Content="Modifier" Click="BtnEditStaff_Click" Margin="0,0,5,0"/>
+                        <Button Content="Supprimer" Click="BtnDeleteStaff_Click"/>
+                    </StackPanel>
+                    <DataGrid Grid.Row="1" x:Name="StaffGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              SelectionMode="Single"
+                              SelectionChanged="StaffGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Prénom" Binding="{Binding FirstName}" Width="120"/>
+                            <DataGridTextColumn Header="Nom" Binding="{Binding Name}" Width="120"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="200"/>
+                            <DataGridTextColumn Header="Rôle" Binding="{Binding Roles}" Width="150"/>
+                            <DataGridTextColumn Header="Type" Binding="{Binding Discr}" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
 
-        <!-- Barre du haut : recherche + boutons -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
-            <TextBox x:Name="SearchBox" Width="200" Margin="0,0,10,0"
-                     mah:TextBoxHelper.Watermark="Rechercher..."
-                     TextChanged="SearchBox_TextChanged"/>
-            <Button Content="Ajouter" Click="BtnAdd_Click" Margin="0,0,5,0"/>
-            <Button Content="Modifier" Click="BtnEdit_Click" Margin="0,0,5,0"/>
-            <Button Content="Supprimer" Click="BtnDelete_Click"/>
-        </StackPanel>
-
-        <!-- Liste des utilisateurs -->
-        <DataGrid Grid.Row="1" x:Name="UserGrid"
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  SelectionMode="Single"
-                  SelectionChanged="UserGrid_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
-                <DataGridTextColumn Header="Prénom" Binding="{Binding FirstName}" Width="120"/>
-                <DataGridTextColumn Header="Nom" Binding="{Binding Name}" Width="120"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="200"/>
-                <DataGridTextColumn Header="Rôle" Binding="{Binding Roles}" Width="150"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding Discr}" Width="100"/>
-            </DataGrid.Columns>
-        </DataGrid>
+            <!-- Onglet Clients -->
+            <TabItem Header="Clients">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,10,0,10">
+                        <TextBox x:Name="SearchClientBox" Width="200" Margin="0,0,10,0"
+                                 mah:TextBoxHelper.Watermark="Rechercher..."
+                                 TextChanged="SearchClientBox_TextChanged"/>
+                        <Button x:Name="BtnAddClient" Content="Ajouter" Click="BtnAddClient_Click" Margin="0,0,5,0"/>
+                        <Button x:Name="BtnEditClient" Content="Modifier" Click="BtnEditClient_Click" Margin="0,0,5,0"/>
+                        <Button x:Name="BtnDeleteClient" Content="Supprimer" Click="BtnDeleteClient_Click"/>
+                    </StackPanel>
+                    <DataGrid Grid.Row="1" x:Name="ClientGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              SelectionMode="Single"
+                              SelectionChanged="ClientGrid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Prénom" Binding="{Binding FirstName}" Width="120"/>
+                            <DataGridTextColumn Header="Nom" Binding="{Binding Name}" Width="120"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="200"/>
+                            <DataGridTextColumn Header="Type" Binding="{Binding Discr}" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>

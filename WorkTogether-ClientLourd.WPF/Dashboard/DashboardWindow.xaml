@@ -47,7 +47,6 @@
                         <Button x:Name="BtnUsers" Content="Utilisateurs" Click="BtnUsers_Click" Style="{StaticResource SidebarButton}"/>
                         <Button x:Name="BtnBays" Content="Baies" Click="BtnBays_Click" Style="{StaticResource SidebarButton}"/>
                         <Button x:Name="BtnOffers" Content="Offres" Click="BtnOffers_Click" Style="{StaticResource SidebarButton}"/>
-                        <Button x:Name="BtnCustomers" Content="Clients" Click="BtnCustomers_Click" Style="{StaticResource SidebarButton}"/>
                         <Button x:Name="BtnReservations" Content="Réservations" Click="BtnReservations_Click" Style="{StaticResource SidebarButton}"/>
                     </StackPanel>
                 </StackPanel>

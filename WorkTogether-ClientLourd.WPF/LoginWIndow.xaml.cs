@@ -3,9 +3,8 @@ using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System.Windows;
 using WorkTogether_ClientLourd.EF;
-using WorkTogether_ClientLourd.EF.Entities;
+using WorkTogether_ClientLourd.WPF.Core;
 using WorkTogether_ClientLourd.WPF.Dashboard;
-using MahApps.Metro.Controls.Dialogs;
 
 namespace WorkTogether_ClientLourd.WPF
 {
@@ -36,15 +35,14 @@ namespace WorkTogether_ClientLourd.WPF
             // Utilisateur introuvable mail/mdp faux
             if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
-                await this.ShowMessageAsync("Erreur de connexion", "Email ou mot de passe incorrect.");
-                return;
+                await CustomMessage.Show(this, "Erreur", "Email ou mot de passe incorrect."); return;
             }
 
             // Vérifie que le rôle est autorisé sur le client lourd
             if (user.Roles != "ROLE_ADMIN" && user.Roles != "ROLE_ACCOUNTANT" &&
                 user.Roles != "ROLE_SUPPORT" && user.Roles != "ROLE_TECHNICIAN")
             {
-                await this.ShowMessageAsync("Accès refusé", "Vous n'avez pas les droits nécessaires.");
+                await CustomMessage.Show(this, "Accès refusé", "Vous n'avez pas les droits nécessaires.");
                 return;
             }
 
