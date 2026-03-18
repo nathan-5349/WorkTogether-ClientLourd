@@ -2,7 +2,7 @@
 using System.Windows;
 namespace WorkTogether_ClientLourd.WPF.Dashboard;
 using WorkTogether_ClientLourd.WPF.Users;
-
+using WorkTogether_ClientLourd.WPF.Bays;
 
 public partial class DashboardWindow : MetroWindow
 {
@@ -29,7 +29,7 @@ public partial class DashboardWindow : MetroWindow
     }
     private void BtnBays_Click(object sender, RoutedEventArgs e)
     {
-
+        MainContent.Content = new BayBoard();
     }
     private void BtnOffers_Click(object sender, RoutedEventArgs e)
     {

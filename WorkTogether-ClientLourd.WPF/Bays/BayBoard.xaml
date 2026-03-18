@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="WorkTogether_ClientLourd.WPF.Bays.BayBoard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+    <Grid Background="{DynamicResource MahApps.Brushes.Window.Background}">
+        <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,10,0,10">
+                    <TextBox x:Name="SearchBayBox" Width="200" Margin="0,0,10,0"
+                                 mah:TextBoxHelper.Watermark="Rechercher..."
+                                 TextChanged="SearchBayBox_TextChanged"/>
+                    <Button Content="Ajouter" Click="BtnAddBay_Click" Margin="0,0,5,0"/>
+                    <Button Content="Modifier" Click="BtnEditBay_Click" Margin="0,0,5,0"/>
+                    <Button Content="Supprimer" Click="BtnDeleteBay_Click"/>
+                </StackPanel>
+        <DataGrid Grid.Row="1" x:Name="BayGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              SelectionMode="Single"
+                              SelectionChanged="BayGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Name}" Width="120"/>
+                <DataGridTextColumn Header="Capacité" Binding="{Binding CapacityUnit}" Width="200"/>
+                <DataGridTextColumn Header="Unités" Binding="{Binding Units.Count}" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
