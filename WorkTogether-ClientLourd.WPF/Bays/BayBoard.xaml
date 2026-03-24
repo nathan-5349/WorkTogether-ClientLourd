@@ -4,27 +4,64 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
     <Grid Background="{DynamicResource MahApps.Brushes.Window.Background}">
         <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,10,0,10">
-                    <TextBox x:Name="SearchBayBox" Width="200" Margin="0,0,10,0"
-                                 mah:TextBoxHelper.Watermark="Rechercher..."
-                                 TextChanged="SearchBayBox_TextChanged"/>
-                    <Button Content="Ajouter" Click="BtnAddBay_Click" Margin="0,0,5,0"/>
-                    <Button Content="Modifier" Click="BtnEditBay_Click" Margin="0,0,5,0"/>
-                    <Button Content="Supprimer" Click="BtnDeleteBay_Click"/>
-                </StackPanel>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,10,0,10">
+            <TextBox x:Name="SearchBayBox" Width="200" Margin="0,0,10,0"
+                     mah:TextBoxHelper.Watermark="Rechercher..."
+                     TextChanged="SearchBayBox_TextChanged"/>
+            <Button Content="Ajouter"   Click="BtnAddBay_Click"    Margin="0,0,5,0"/>
+            <Button Content="Modifier"  Click="BtnEditBay_Click"   Margin="0,0,5,0"/>
+            <Button Content="Supprimer" Click="BtnDeleteBay_Click"/>
+        </StackPanel>
+
         <DataGrid Grid.Row="1" x:Name="BayGrid"
-                              AutoGenerateColumns="False"
-                              IsReadOnly="True"
-                              SelectionMode="Single"
-                              SelectionChanged="BayGrid_SelectionChanged">
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionChanged="BayGrid_SelectionChanged"
+                  CanUserAddRows="False"
+                  AlternationCount="2">
+
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow"
+                       BasedOn="{StaticResource MahApps.Styles.DataGridRow}">
+                    <Style.Triggers>
+
+                        <!-- Ligne paire au repos -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="AlternationIndex" Value="0"/>
+                                <Condition Property="IsMouseOver"      Value="False"/>
+                                <Condition Property="IsSelected"       Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="White"/>
+                        </MultiTrigger>
+
+                        <!-- Ligne impaire au repos -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="AlternationIndex" Value="1"/>
+                                <Condition Property="IsMouseOver"      Value="False"/>
+                                <Condition Property="IsSelected"       Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="#EEF4FB"/>
+                        </MultiTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
-                <DataGridTextColumn Header="Nom" Binding="{Binding Name}" Width="120"/>
-                <DataGridTextColumn Header="Capacité" Binding="{Binding CapacityUnit}" Width="200"/>
-                <DataGridTextColumn Header="Unités" Binding="{Binding Units.Count}" Width="200"/>
+                <DataGridTextColumn Header="ID"          Binding="{Binding Id}"               Width="50"/>
+                <DataGridTextColumn Header="Nom"         Binding="{Binding Name}"             Width="*"/>
+                <DataGridTextColumn Header="Capacité"    Binding="{Binding CapacityUnit}"     Width="90"/>
+                <DataGridTextColumn Header="Total"       Binding="{Binding TotalUnits}"       Width="70"/>
+                <DataGridTextColumn Header="Libres"      Binding="{Binding FreeUnits}"        Width="70"/>
+                <DataGridTextColumn Header="Occupées"    Binding="{Binding BusyUnits}"        Width="80"/>
+                <DataGridTextColumn Header="Maintenance" Binding="{Binding MaintenanceUnits}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

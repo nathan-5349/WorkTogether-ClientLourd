@@ -23,7 +23,8 @@
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
                               SelectionMode="Single"
-                              SelectionChanged="StaffGrid_SelectionChanged">
+                              SelectionChanged="StaffGrid_SelectionChanged"
+                              CanUserAddRows="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
                             <DataGridTextColumn Header="Prénom" Binding="{Binding FirstName}" Width="120"/>
@@ -55,7 +56,8 @@
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
                               SelectionMode="Single"
-                              SelectionChanged="ClientGrid_SelectionChanged">
+                              SelectionChanged="ClientGrid_SelectionChanged"
+                              CanUserAddRows="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
                             <DataGridTextColumn Header="Prénom" Binding="{Binding FirstName}" Width="120"/>

@@ -13,8 +13,8 @@
         <StackPanel VerticalAlignment="Center" >
             <TextBlock Text="Connexion" FontSize="22" FontWeight="Bold" Margin="0,0,0,20"/>
             <TextBox x:Name="EmailBox" mah:TextBoxHelper.Watermark="Email" Margin="0,0,0,10"/>
-            <PasswordBox x:Name="PasswordBox" mah:TextBoxHelper.Watermark="Mot de passe" Margin="0,0,0,20"/>
-            <Button x:Name="LoginButton" Content="Se connecter" Click="LoginClick"/>
+            <PasswordBox x:Name="PasswordBox" mah:TextBoxHelper.Watermark="Mot de passe" Margin="0,0,0,20" KeyDown="PasswordBox_KeyDown"/>
+            <Button Name="LoginButton" Content="Se connecter" Click="LoginClick"/>
         </StackPanel>
     </Grid>
 </mah:MetroWindow>

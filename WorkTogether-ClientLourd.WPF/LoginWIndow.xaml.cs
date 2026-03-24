@@ -2,6 +2,7 @@
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System.Windows;
+using System.Windows.Input;
 using WorkTogether_ClientLourd.EF;
 using WorkTogether_ClientLourd.WPF.Core;
 using WorkTogether_ClientLourd.WPF.Dashboard;
@@ -13,6 +14,11 @@ namespace WorkTogether_ClientLourd.WPF
         public LoginWindow()
         {
             InitializeComponent();
+        }
+        private void PasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                LoginClick(sender, e);
         }
 
         private async void LoginClick(object sender, RoutedEventArgs e)
